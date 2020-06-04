@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App3.Page1">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text= "Resume" Activated="ToolbarItemActivatedResume"/>
+
+        <ToolbarItem Text= "Pause" Activated="ToolbarItemActivatedPause"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Padding="5,5,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="AUTO"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Überschrift -->
+                    <Label Grid.Row="0" Grid.ColumnSpan="16" Text="Sudoku Generator" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="25" BackgroundColor="#2C7BF7"/>
+
+                    <!-- Feld generieren Button -->
+                    <Button Grid.Row="1" Grid.ColumnSpan="6" Grid.Column="0" Text="Generieren" FontSize="Body"  BackgroundColor="LightGray" Clicked="GenerateField"/>
+                    
+                    <!-- Feld prüfen Button -->
+                    <Button Grid.Row="1" Grid.ColumnSpan="6" Grid.Column="10" Text="überprüfen" FontSize="Body" BackgroundColor="LightGray" Clicked="CheckField"/>
+                    
+                    <!-- Feld Stopwatch Label -->
+                    <Label x:Name="lblStopwatch" FontSize="20" 
+               VerticalOptions="StartAndExpand" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="16"
+            HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="LightPink" TextColor="Black" />
+                </Grid>
+                <Grid Padding="5,5,5,40">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Linien -->
+                    <BoxView Grid.Row="3" BackgroundColor="Gray" Grid.ColumnSpan="11"/>
+                    <BoxView Grid.Row="7" BackgroundColor="Gray" Grid.ColumnSpan="11"/>
+
+                    <BoxView Grid.Column="3" BackgroundColor="Gray" Grid.RowSpan="11"/>
+                    <BoxView Grid.Column="7" BackgroundColor="Gray" Grid.RowSpan="11"/>
+
+                    <!-- Grid -->
+                    <Entry Grid.Row="0" Grid.Column="0"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E00" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="0" Grid.Column="1"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E01" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="0" Grid.Column="2"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E02" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="0" Grid.Column="4"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E03" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="0" Grid.Column="5"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E04" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="0" Grid.Column="6"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E05" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="0" Grid.Column="8"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E06" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="0" Grid.Column="9"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E07" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="0" Grid.Column="10" Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E08" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+
+                    <Entry Grid.Row="1" Grid.Column="0"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E10" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="1" Grid.Column="1"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E11" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="1" Grid.Column="2"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E12" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="1" Grid.Column="4"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E13" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="1" Grid.Column="5"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E14" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="1" Grid.Column="6"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E15" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="1" Grid.Column="8"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E16" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="1" Grid.Column="9"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E17" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="1" Grid.Column="10" Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E18" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+
+                    <Entry Grid.Row="2" Grid.Column="0"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E20" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="2" Grid.Column="1"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E21" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="2" Grid.Column="2"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E22" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="2" Grid.Column="4"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E23" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="2" Grid.Column="5"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E24" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="2" Grid.Column="6"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E25" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="2" Grid.Column="8"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E26" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="2" Grid.Column="9"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E27" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="2" Grid.Column="10" Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E28" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+
+                    <Entry Grid.Row="4" Grid.Column="0"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E30" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="4" Grid.Column="1"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E31" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="4" Grid.Column="2"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E32" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="4" Grid.Column="4"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E33" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="4" Grid.Column="5"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E34" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="4" Grid.Column="6"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E35" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="4" Grid.Column="8"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E36" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="4" Grid.Column="9"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E37" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="4" Grid.Column="10" Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E38" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+
+                    <Entry Grid.Row="5" Grid.Column="0"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E40" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="5" Grid.Column="1"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E41" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="5" Grid.Column="2"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E42" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="5" Grid.Column="4"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E43" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="5" Grid.Column="5"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E44" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="5" Grid.Column="6"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E45" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="5" Grid.Column="8"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E46" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="5" Grid.Column="9"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E47" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="5" Grid.Column="10" Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E48" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+
+                    <Entry Grid.Row="6" Grid.Column="0"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E50" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="6" Grid.Column="1"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E51" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="6" Grid.Column="2"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E52" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="6" Grid.Column="4"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E53" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="6" Grid.Column="5"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E54" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="6" Grid.Column="6"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E55" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="6" Grid.Column="8"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E56" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="6" Grid.Column="9"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E57" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="6" Grid.Column="10" Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E58" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+
+                    <Entry Grid.Row="8" Grid.Column="0"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E60" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="8" Grid.Column="1"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E61" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="8" Grid.Column="2"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E62" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="8" Grid.Column="4"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E63" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="8" Grid.Column="5"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E64" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="8" Grid.Column="6"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E65" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="8" Grid.Column="8"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E66" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="8" Grid.Column="9"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E67" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="8" Grid.Column="10" Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E68" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+
+                    <Entry Grid.Row="9" Grid.Column="0"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E70" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="9" Grid.Column="1"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E71" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="9" Grid.Column="2"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E72" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="9" Grid.Column="4"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E73" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="9" Grid.Column="5"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E74" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="9" Grid.Column="6"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E75" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="9" Grid.Column="8"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E76" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="9" Grid.Column="9"  Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E77" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="9" Grid.Column="10" Keyboard="Numeric"  BackgroundColor="FloralWhite" x:Name="E78" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+
+                    <Entry Grid.Row="10" Grid.Column="0"  Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E80" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="10" Grid.Column="1"  Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E81" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="10" Grid.Column="2"  Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E82" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="10" Grid.Column="4"  Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E83" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="10" Grid.Column="5"  Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E84" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="10" Grid.Column="6"  Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E85" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="10" Grid.Column="8"  Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E86" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="10" Grid.Column="9"  Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E87" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                    <Entry Grid.Row="10" Grid.Column="10" Keyboard="Numeric" BackgroundColor="FloralWhite" x:Name="E88" MaxLength="1" Focused="Focused" Unfocused="Unfocused"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
