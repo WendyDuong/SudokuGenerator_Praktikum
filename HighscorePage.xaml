@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:App3"
+             mc:Ignorable="d"
+             x:Class="App3.HighscorePage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text= "Zurück" Clicked="BackButton" />
+        
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="5,5,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                
+                <Label Grid.Row="1"  Text="Gratulation! =)" TextColor="IndianRed" FontSize="40" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Grid.Row="2" x:Name="score" Text="Spielzeit: " TextColor="Blue" FontSize="22" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" />
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
